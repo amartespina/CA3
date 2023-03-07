@@ -93,7 +93,7 @@ function deleteSuperhero(id)
     //selectedIndex corresponds to the array key
     let selectedIndex = -1
     //iterate through the cars array to find the element to remove
-    superheroesTOView.forEach((superhero, index) => {
+    superheroesToView.forEach((superhero, index) => {
         if (superhero.identificationNumber === parseInt(id))
         {
             selectedIndex = index
@@ -101,10 +101,10 @@ function deleteSuperhero(id)
     })
     if (selectedIndex >= 0)
     {
-        superheroesTOView.splice(selectedIndex, 1)   
-        console.log(superheroesTOView)     
+        superheroesToView.splice(selectedIndex, 1)   
+        console.log(superheroesToView)     
     }
-    viewJSONData()
+    viewJSONData(superheroesToView)
 }
 
 
@@ -213,13 +213,13 @@ function deleteSuperhero(id)
     
 
     function addSuperhero(align, alive, eye, hair, id, sex, name ){
-        let newsuperheroesTOView = []
+        let newsuperheroesToView = []
         console.log("funcion addSuperhero")
         let newSuperhero = {identificationNumber:uniqueId, align: align, alive:alive ,eye:eye, hair:hair, id:id, sex:sex, name:name }
         console.log(newSuperhero)
-        newsuperheroesTOView.push(newSuperhero)
-        console.log(newsuperheroesTOView)
-        viewJSONData(newsuperheroesTOView)
+        newsuperheroesToView.push(newSuperhero)
+        console.log(newsuperheroesToView)
+        viewJSONData(newsuperheroesToView)
 
     }
 
