@@ -15,6 +15,7 @@
    
 </script> 
 <body>
+    <!-- OCULTO EL LOG IN -->
     <!-- 
     <section id="log-in-part">
         <div class="form-box">
@@ -43,20 +44,20 @@
     !-->
     
     <div id="page"> 
-        Search: <input type="search" oninput="search(this.value)"/>
-    <fieldset>
-        <legend>Search By Eye</legend>
-        <input type="text" id="eye" placeholder="id" />
-        <button onclick="searchByEye(document.getElementById('eye').value)">Search</button>
-    </fieldset>
 
+        <fieldset> 
+            <legend> Search By Name </legend>
+         <input id = "name" type="search" oninput="search(this.value)" placeholder="Enter a name"/>
+        <button onclick="searchByName(document.getElementById('name'))">Search </button>
+    </fieldset>
     <fieldset>
         <legend>Display All Superheroes</legend>
-        <button onclick="viewJSONData()">Display Superheroes</button>
+        <button onclick="viewJSONData(superheroesToView)">Display Superheroes</button>
     </fieldset>
-    
-        <fieldset>
-            <legend>Add your character</legend>
+
+    <!-- FORMULARIO PARA AGREGAR SUPERHEROE-->
+    <fieldset>
+            <legend>Add your Superhero</legend>
 
             <label for="align">Align: </label> <br>
             <select name="align" id="alignid">

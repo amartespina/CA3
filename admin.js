@@ -1,7 +1,7 @@
- /** Solo tiene que aparecer hasta sex ? 
-     * He modificado el dataset. Estaba "first Appearance" y lo he ocnvertido a "FirstAppearance"
-     * No he puesto gsm porque todo era null 
-     * */ 
+ /** Añado pero al darle a mostrar me los muestra x2
+     * Al eliminar tambien. 
+     *
+     *  */ 
     //let superheroes= $.getJSON("https://pkgstore.datahub.io/five-thirty-eight/comic-characters/dc-wikia-data_json/data/8b35699325a97475673d4255ab21d4df/dc-wikia-data_json.json") 
 
 
@@ -10,8 +10,9 @@
 
 
 let sortAscendingOrder = true
+let superheroesToView = []
     
-let uniqueId = 0
+let uniqueId = 1
 // Json data tiene los usuarios y contraseñas 
 
 let peopleData
@@ -33,8 +34,6 @@ let peopleData
 
 
 function viewJSONData(arrayToView){
-    let superheroesTOView = []
-    
     console.log("funcion viewJSONData")
     let url = `superhero.json`
     fetch(url)
@@ -44,7 +43,7 @@ function viewJSONData(arrayToView){
         jsonData.forEach(superhero =>{
             let newSuperhero = {identificationNumber:uniqueId, align: superhero.align, alive: superhero.alive, appearances: superhero.appearances, eye: superhero.eye, firstAppearance: superhero.firstAppearance, hair: superhero.hair, id: superhero.id, name: superhero.name, pageId: superhero.page_id, sex:superhero.sex }
             uniqueId++
-            superheroesTOView.push(newSuperhero)
+            superheroesToView.push(newSuperhero)
             
         })
 
@@ -65,7 +64,7 @@ function viewJSONData(arrayToView){
                             <th> Name </th>
                      </tr>
             </thead>`
-        superheroesTOView.map(superhero =>
+        arrayToView.map(superhero =>
         {
             htmlString +=              
             `<tbody>
@@ -136,6 +135,18 @@ function deleteSuperhero(id)
 
    }
 
+   function search(value){
+    searchValue = value
+    //filter function. Cunado utilizamos la funcion serach utilizamos el filter-
+   if(searchValue === "") {viewJSONData(superheroesToView)} 
+    else { 
+    let displayedsuperheroes = superheroesToView.filter(superhero => 
+    superhero.name.includes(searchValue) || superhero.name.toLocaleLowerCase().includes(searchValue)
+    )
+    console.log(displayedsuperheroes)
+    viewJSONData(displayedsuperheroes)}
+}
+
 /** 
     function viewJSONData(arrayToView){
         let preuba = 1
@@ -188,27 +199,6 @@ function deleteSuperhero(id)
 
 
 
-/** 
-    function search(value){
-            searchValue = value
-            //filter function. Cunado utilizamos la funcion serach utilizamos el filter-
-           if(searchValue === "") {viewJSONData(superheroes)} 
-            else { 
-            let displayedsuperheroes = superheroes.filter(superhero => 
-            superhero.align.includes(searchValue) || superhero.align.toLowerCase().includes(searchValue) ||
-            superhero.alive.includes(searchValue) || superhero.alive.toLowerCase().includes(searchValue) ||
-            superhero.appearances == searchValue || // Todo tipo integer. Por eso lo ponemos asi. 
-            superhero.eye.includes(searchValue) || superhero.eye.toLocaleLowerCase().includes(searchValue) || 
-            superhero.firstAppearance.includes(searchValue) || superhero.firstAppearance.toLocaleLowerCase().includes(searchValue) ||
-            superhero.hair.includes(searchValue) || superhero.hair.toLocaleLowerCase().includes(searchValue) ||
-            superhero.id.includes(searchValue) || superhero.id.toLocaleLowerCase().includes(searchValue) ||
-            superhero.name.includes(searchValue) || superhero.name.toLocaleLowerCase().includes(searchValue) ||
-            superhero.pageId == searchValue ||  // Todo tipo integer. Por eso lo ponemos asi.
-            superhero.sex == searchValue || superhero.sex.toLowerCase == searchValue // Lo pongo asi porque female contiene a male 
-       
-            )
-            viewJSONData(displayedsuperheroes)}
-    }
 
     function searchByAlign(align){
         const selectedHeroes = superheroes.filter(superhero => superhero.i=== align)
@@ -220,7 +210,7 @@ function deleteSuperhero(id)
         viewJSONData(selectedHeroesEye)
     }
     
-    */
+    
 
     function addSuperhero(align, alive, eye, hair, id, sex, name ){
         let newsuperheroesTOView = []
