@@ -32,20 +32,25 @@ let peopleData
 }
 
 
-
+let primeravez = true
 function viewJSONData(arrayToView){
+
     console.log("funcion viewJSONData")
     let url = `superhero.json`
     fetch(url)
     .then(response => response.json())
     .then(jsonData => 
+    
     {
-        jsonData.forEach(superhero =>{
+        if(primeravez){jsonData.forEach(superhero =>{
+            console.log("primeraveztrue")
             let newSuperhero = {identificationNumber:uniqueId, align: superhero.align, alive: superhero.alive, appearances: superhero.appearances, eye: superhero.eye, firstAppearance: superhero.firstAppearance, hair: superhero.hair, id: superhero.id, name: superhero.name, pageId: superhero.page_id, sex:superhero.sex }
             uniqueId++
             superheroesToView.push(newSuperhero)
-            
+            primeravez = false
         })
+    }
+    {
 
     /**
      * model: car["car model"]
@@ -83,7 +88,7 @@ function viewJSONData(arrayToView){
         })
         htmlString += `</table><br>${jsonData.length} records found.`
         document.getElementById('prueba').innerHTML = htmlString
-    })
+    }})
 }
 
 function deleteSuperhero(id)
@@ -213,13 +218,11 @@ function deleteSuperhero(id)
     
 
     function addSuperhero(align, alive, eye, hair, id, sex, name ){
-        let newsuperheroesToView = []
         console.log("funcion addSuperhero")
         let newSuperhero = {identificationNumber:uniqueId, align: align, alive:alive ,eye:eye, hair:hair, id:id, sex:sex, name:name }
         console.log(newSuperhero)
-        newsuperheroesToView.push(newSuperhero)
-        console.log(newsuperheroesToView)
-        viewJSONData(newsuperheroesToView)
+        superheroesToView.push(newSuperhero)
+        viewJSONData(superheroesToView)
 
     }
 
