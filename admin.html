@@ -124,40 +124,9 @@
             <button onclick="addSuperhero(document.getElementById('alignid').value, document.getElementById('aliveid').value, document.getElementById('eye_color').value, document.getElementById('hair').value, document.getElementById('identity').value, document.getElementById('sex').value, document.getElementById('namesuperhero').value)"> Add Superhero </button>
     
 
-<!-- function addSuperhero(align, alive, eye, hair, id, name, sex)-->
-    <!--      
-    <fieldset> 
-    
-        <legend> Prueba </legend>  
-        <label for="eye_color">Eye color:</label> <br>
-        <select name="eye" id="eye_color">
-            <option value="blue">blue</option>
-            <option value="brown">brown</option>
-            <option value="green">green</option>
-            <option value="purple">purple</option>
-            <option value="black">black</option>
-            <option value="blue">blue</option>
-            <option value="white">white</option>
-            <option value="red">red</option>
-        </select>
-        <button onclick="prueba(document.getElementById('eye_color').value)">  d</button>
 
--->
 
-<legend> Prueba </legend>
 
-<label>Align: </label> <br>
-
-<input type="checkbox" name="alignn" id="good" value="good">
-<label for="good">good characters </label>
-
-<input type="checkbox" name="alignn" id="neutral" value="neutral">
-<label for="neutral">neutral characters </label>
-
-<input type="checkbox" name="alignn" id="bad" value="bad">
-<label for="bad">bad characters</label>
-
-<button onclick="prueba(document.getElementById('alignn')).value">  d </button>
     
 
 
@@ -166,7 +135,8 @@
 
 
     <fieldset> 
-        <legend> Modify Superhero </legend> 
+        <legend> Modify Superhero </legend>
+        <input type="text" id="IdentificationNumber" placeholder="IdentificationNumber">
         <input type="text" id="AddAlign" placeholder="align">
         <input type="text" id="AddAlive" placeholder="alive">
         <input type="text" id="AddAppearances" placeholder="appearances">
@@ -177,7 +147,7 @@
         <input type="text" id="AddName" placeholder="name">
         <input type="text" id="AddPageId" placeholder="pageId">
         <input type="text" id="AddSex" placeholder="sex">
-        <button onclick="modifySuperhero(document.getElementById('AddAlign').value, document.getElementById('AddAlive').value, document.getElementById('AddAppearances').value, document.getElementById('AddEye').value, document.getElementById('AddFirstAppearance').value, document.getElementById('AddHair').value, document.getElementById('AddId').value, document.getElementById('AddName').value, document.getElementById('AddPageId').value, document.getElementById('AddSex').value)"> Add Superhero </button>
+        <button onclick="modifySuperhero(document.getElementById('IdentificationNumber').value, document.getElementById('AddAlign').value, document.getElementById('AddAlive').value, document.getElementById('AddAppearances').value, document.getElementById('AddEye').value, document.getElementById('AddFirstAppearance').value, document.getElementById('AddHair').value, document.getElementById('AddId').value, document.getElementById('AddName').value, document.getElementById('AddPageId').value, document.getElementById('AddSex').value)"> Add Superhero </button>
     </fieldset> 
 
     <div id = "iddesuperheroes"> </div>

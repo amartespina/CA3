@@ -11,6 +11,7 @@
 
 let sortAscendingOrder = true
 let superheroesToView = []
+let primeravez = true
     
 let uniqueId = 1
 // Json data tiene los usuarios y contraseñas 
@@ -32,9 +33,8 @@ let peopleData
 }
 
 
-let primeravez = true
-function viewJSONData(arrayToView){
 
+function viewJSONData(arrayToView){
     console.log("funcion viewJSONData")
     let url = `superhero.json`
     fetch(url)
@@ -109,6 +109,31 @@ function deleteSuperhero(id)
         superheroesToView.splice(selectedIndex, 1)   
         console.log(superheroesToView)     
     }
+    viewJSONData(superheroesToView)
+}
+
+function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, name)
+
+{
+    console.log("modifysuperheroe")
+    console.log(IdentificationNumber)
+    //check if the car matches one of the cars in the dataset
+    
+    //iterate through all cars
+    superheroesToView.forEach(superhero => {
+        
+        if (superhero.identificationNumber === parseInt(IdentificationNumber))
+        {
+            //update the rest of the details
+            superhero.align = align
+            superhero.alive = alive
+            superhero.eye = eye
+            superhero.hair = hair
+            superhero.id = id
+            superhero.sex = sex
+            superhero.name = name
+        }
+    })
     viewJSONData(superheroesToView)
 }
 
@@ -222,14 +247,12 @@ function deleteSuperhero(id)
         let newSuperhero = {identificationNumber:uniqueId, align: align, alive:alive ,eye:eye, hair:hair, id:id, sex:sex, name:name }
         console.log(newSuperhero)
         superheroesToView.push(newSuperhero)
+        uniqueId++
         viewJSONData(superheroesToView)
 
     }
 
 
-    function prueba(saludo){
-        console.log(saludo); 
-    }
 
 
     
