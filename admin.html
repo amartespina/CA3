@@ -15,6 +15,9 @@
    
 </script> 
 <body>
+
+
+
     <!-- OCULTO EL LOG IN -->
     <!-- 
     <section id="log-in-part">
@@ -43,7 +46,13 @@
  abajo poner style="display:none;"
     !-->
     
+
+
+
     <div id="page"> 
+        
+
+
 
         <fieldset> 
             <legend> Search By Name </legend>
@@ -133,22 +142,76 @@
 
     </fieldset>
 
-
+    <!-- FORMULARIO PARA MODIFICAR SUPERHEROE-->
     <fieldset> 
-        <legend> Modify Superhero </legend>
-        <input type="text" id="IdentificationNumber" placeholder="IdentificationNumber">
-        <input type="text" id="AddAlign" placeholder="align">
-        <input type="text" id="AddAlive" placeholder="alive">
-        <input type="text" id="AddAppearances" placeholder="appearances">
-        <input type="text" id="AddEye" placeholder="eye">
-        <input type="text" id="AddFirstAppearance" placeholder="firstAppearance">
-        <input type="text" id="AddHair" placeholder="hair">
-        <input type="text" id="AddId" placeholder="id">
-        <input type="text" id="AddName" placeholder="name">
-        <input type="text" id="AddPageId" placeholder="pageId">
-        <input type="text" id="AddSex" placeholder="sex">
-        <button onclick="modifySuperhero(document.getElementById('IdentificationNumber').value, document.getElementById('AddAlign').value, document.getElementById('AddAlive').value, document.getElementById('AddAppearances').value, document.getElementById('AddEye').value, document.getElementById('AddFirstAppearance').value, document.getElementById('AddHair').value, document.getElementById('AddId').value, document.getElementById('AddName').value, document.getElementById('AddPageId').value, document.getElementById('AddSex').value)"> Add Superhero </button>
-    </fieldset> 
+        <input type="text" id="IdentificationNumbermodify" placeholder="IdentificationNumber">
+        <label for="align">Align: </label> <br>
+        <select name="align" id="alignmodify">
+            <option value="good characters"> good  </option>
+            <option value="bad characters"> bad  </option>
+            <option value="neutral characters"> neutral </option>
+            <option value="null"> null </option>
+        </select>  
+    
+        <!--  living and deceased characters -->
+        <br>
+        <label for="alive">Alive: </label> <br>
+        <select name="alive" id="alivemodify">
+            <option value="living characters"> living </option>
+            <option value="deceased characters"> deceased </option>
+        </select>    
+        <br>
+
+        <!-- eye colour (a dropdown) -->
+        <label for="eye_color">Eye color:</label> <br>
+        <select name="eye" id="eye_colormodify">
+            <option value="blue">blue</option>
+            <option value="brown">brown</option>
+            <option value="green">green</option>
+            <option value="purple">purple</option>
+            <option value="black">black</option>
+            <option value="blue">blue</option>
+            <option value="white">white</option>
+            <option value="red">red</option>
+        </select>
+        <br>
+        <!-- hair color -->
+        <label for="hair">Hair Color: </label>
+        <select name="hair" id="hairmodify">
+            <option value="black">black</option>
+            <option value="white">white</option>
+            <option value="brown">brown</option>
+            <option value="blond">blond</option>
+            <option value="red">red</option>
+            <option value="green">gree</option>
+            <option value="white">white</option>
+            <option value="red">red</option>
+            <option value="null">null</option>
+        </select>
+        <br>
+        <!-- id (identity: secret or public) -->
+        <label>Choose the identity: </label>
+        <select name="identity" id="identitymodify">
+            <option value="public identity "> Public</option>
+            <option value="secret identity"> Secret </option> 
+        </select>
+        <br> 
+        <!-- sex -->
+        <label>Choose the sex: </label>
+        <select name="sex" id="sexmodify">
+            <option value="male characters"> Male</option>
+            <option value="female characters"> Female </option> 
+        </select>
+        <br>
+
+        <label> Name </legend> 
+            <input type="text" id="namemodify" placeholder="name">
+        <button onclick="modifySuperhero(document.getElementById('IdentificationNumbermodify').value, document.getElementById('alignmodify').value, document.getElementById('alivemodify').value, document.getElementById('eye_colormodify').value, document.getElementById('hairmodify').value, document.getElementById('identitymodify').value, document.getElementById('sexmodify').value, document.getElementById('namemodify').value)"> Add Superhero </button>
+    </fieldset>
+
+
+
+
 
     <div id = "iddesuperheroes"> </div>
 

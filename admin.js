@@ -118,7 +118,14 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
     console.log("modifysuperheroe")
     console.log(IdentificationNumber)
     //check if the car matches one of the cars in the dataset
-    
+    console.log()
+    console.log(align)
+    console.log(alive)
+    console.log(eye)
+    console.log(hair)
+    console.log(id)
+    console.log(sex)
+    console.log(name)
     //iterate through all cars
     superheroesToView.forEach(superhero => {
         
@@ -177,59 +184,6 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
     viewJSONData(displayedsuperheroes)}
 }
 
-/** 
-    function viewJSONData(arrayToView){
-        let preuba = 1
-        htmlString = 
-        `
-        <p> ${arrayToView.length} items found </p>
-        <table class="content-table">
-            <thead>             
-                    <tr>
-                            <th> Identification Number </th>    
-                            <th> Align </th>
-                            <th onclick="sortResultsbyAlive()"> Alive </th>
-                            <th onclick="sortResults()"> Appearances </th>
-                            <th> Eye </th>
-                            <th> First Appearance </th>
-                            <th> Hair </th>
-                            <th> Id </th>
-                            <th> Name </th>
-                            <th> page Id </th>
-                            <th> Sex </th>
-                     </tr>
-            </thead>`
-        arrayToView.forEach(element => 
-            htmlString += 
-             
-                                                    `<tbody>
-                                                        <tr> 
-                                                            <td>${element.align} </td>
-                                                            <td>${element.alive}</td>
-                                                            <td>${element.appearances}</td>
-                                                            <td>${element.eye}</td>
-                                                            <td>${element.firstAppearance}
-                                                            <td>${element.hair}</td>
-                                                            <td>${element.id}</td>
-                                                            <td>${element.name}</td>
-                                                            <td>${element.pageId}</td>
-                                                            <td>${element.sex}</td>
-                                                        </tr>
-                                                     
-                                                    </tbody>`
-                                     
-                            )
-                                                    
-
-        htmlString += `</table>`
-
-                document.getElementById("iddesuperheroes").innerHTML = htmlString    
-    }
-*/
-
-
-
-
     function searchByAlign(align){
         const selectedHeroes = superheroes.filter(superhero => superhero.i=== align)
         viewJSONData(selectedHeroes)
@@ -243,6 +197,7 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
     
 
     function addSuperhero(align, alive, eye, hair, id, sex, name ){
+        viewJSONData(superheroesToView)
         console.log("funcion addSuperhero")
         let newSuperhero = {identificationNumber:uniqueId, align: align, alive:alive ,eye:eye, hair:hair, id:id, sex:sex, name:name }
         console.log(newSuperhero)
@@ -251,21 +206,6 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
         viewJSONData(superheroesToView)
 
     }
-
-
-
-
-    
-
-
-    /**
-     * function searchCarsByID(id)
-{
-    const selectedCars = cars.filter(car => car.id === parseInt(id))
-    displayCars(selectedCars)
-    //return selectedCars[0]
-}
-     */
 
 
     function sortResultsbyAlive(){
