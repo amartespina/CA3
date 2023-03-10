@@ -8,8 +8,11 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="admin.js" type="text/javascript"></script>
     <!--<script src="superheroes.js" type="text/javascript"> </script>-->
-
-
+    <style>
+        #searchByName, #searchByColour, #everything {
+            display: none;
+        }
+    </style>
 </head>
 <script>
    
@@ -48,26 +51,35 @@
     
 
 
-
+    
     <div id="page"> 
-        
+        <header>
+            <div class="interior">
+              <a class="logo" ><img src="descarga.png" alt="Logo"></a>
+              <nav class="navegacion">
+                <ul>
+                  <li><a onclick="viewJSONData(superheroesToView)"> Display All </a></li>
+                  <li><a onclick="showSearchByName()"> Search By Name </a></li>
+
+                </ul>
+              </nav>
+            </div>
+        </header>
+    
 
 
-
+         
+    <div id = "searchByName"> 
         <fieldset> 
-            <legend> Search By Name </legend>
-         <input id = "name" type="search" oninput="search(this.value)" placeholder="Enter a name"/>
-        <button onclick="searchByName(document.getElementById('name'))">Search </button>
-    </fieldset>
-    <fieldset>
-        <legend>Display All Superheroes</legend>
-        <button onclick="viewJSONData(superheroesToView)">Display Superheroes</button>
-    </fieldset>
-
+            <legend > Search By Name </legend>
+            <input  type="search" oninput="search(this.value)" placeholder="Enter a name"/>
+            <button onclick="searchByName(document.getElementById('name'))">Search </button>
+        </fieldset>
+    </div>
     <!-- FORMULARIO PARA AGREGAR SUPERHEROE-->
-    <fieldset>
+    <div id="FormToAddSuperhero">
+        <fieldset>
             <legend>Add your Superhero</legend>
-
             <label for="align">Align: </label> <br>
             <select name="align" id="alignid">
                 <option value="good characters"> good  </option>
@@ -75,7 +87,6 @@
                 <option value="neutral characters"> neutral </option>
                 <option value="null"> null </option>
             </select>  
-        
             <!--  living and deceased characters -->
             <br>
             <label for="alive">Alive: </label> <br>
@@ -84,7 +95,6 @@
                 <option value="deceased characters"> deceased </option>
             </select>    
             <br>
-
             <!-- eye colour (a dropdown) -->
             <label for="eye_color">Eye color:</label> <br>
             <select name="eye" id="eye_color">
@@ -126,33 +136,23 @@
                 <option value="female characters"> Female </option> 
             </select>
             <br>
-
             <label> Name </legend> 
-        <input type="text" id="namesuperhero" placeholder="name">
-            
+            <input type="text" id="namesuperhero" placeholder="name">
             <button onclick="addSuperhero(document.getElementById('alignid').value, document.getElementById('aliveid').value, document.getElementById('eye_color').value, document.getElementById('hair').value, document.getElementById('identity').value, document.getElementById('sex').value, document.getElementById('namesuperhero').value)"> Add Superhero </button>
-    
-
-
-
-
-    
-
-
-
-    </fieldset>
+        </fieldset>
+    </div>
 
     <!-- FORMULARIO PARA MODIFICAR SUPERHEROE-->
-    <fieldset> 
-        <input type="text" id="IdentificationNumbermodify" placeholder="IdentificationNumber">
-        <label for="align">Align: </label> <br>
-        <select name="align" id="alignmodify">
-            <option value="good characters"> good  </option>
-            <option value="bad characters"> bad  </option>
-            <option value="neutral characters"> neutral </option>
-            <option value="null"> null </option>
-        </select>  
-    
+    <div id="formToModifySuperhero">
+        <fieldset> 
+            <input type="text" id="IdentificationNumbermodify" placeholder="IdentificationNumber">
+            <label for="align">Align: </label> <br>
+            <select name="align" id="alignmodify">
+                <option value="good characters"> good  </option>
+                <option value="bad characters"> bad  </option>
+                <option value="neutral characters"> neutral </option>
+                <option value="null"> null </option>
+            </select>  
         <!--  living and deceased characters -->
         <br>
         <label for="alive">Alive: </label> <br>
@@ -203,23 +203,24 @@
             <option value="female characters"> Female </option> 
         </select>
         <br>
-
         <label> Name </legend> 
             <input type="text" id="namemodify" placeholder="name">
-        <button onclick="modifySuperhero(document.getElementById('IdentificationNumbermodify').value, document.getElementById('alignmodify').value, document.getElementById('alivemodify').value, document.getElementById('eye_colormodify').value, document.getElementById('hairmodify').value, document.getElementById('identitymodify').value, document.getElementById('sexmodify').value, document.getElementById('namemodify').value)"> Add Superhero </button>
-    </fieldset>
+        <button onclick="modifySuperhero(document.getElementById('IdentificationNumbermodify').value, document.getElementById('alignmodify').value, document.getElementById('alivemodify').value, document.getElementById('eye_colormodify').value, document.getElementById('hairmodify').value, document.getElementById('identitymodify').value, document.getElementById('sexmodify').value, document.getElementById('namemodify').value)"> Modify Superhero </button>
+        </fieldset>
+    </div>
+
+    <div id = "iddesuperheroes"> 
+
+    </div>
+    <div id="showsuperheroes"> 
+
+    </div>
+</div>
 
 
 
 
 
-    <div id = "iddesuperheroes"> </div>
-
-
-
-
-
-    <div id="prueba"> </div>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

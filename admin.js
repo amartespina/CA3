@@ -12,11 +12,24 @@
 let sortAscendingOrder = true
 let superheroesToView = []
 let primeravez = true
-    
+let hideSearch = true
 let uniqueId = 1
 // Json data tiene los usuarios y contraseñas 
 
 let peopleData
+
+function prueba(argumento){
+    console.log(argumento)
+}
+function showSearchByName(){
+    
+    if(hideSearch){
+        document.getElementById("searchByName").style.display = "block";
+        hideSearch = false
+    }
+    else {document.getElementById("searchByName").style.display = "none"; hideSearch=true}
+
+}
 
 
     window.onload = () =>
@@ -87,7 +100,7 @@ function viewJSONData(arrayToView){
             </tbody> `
         })
         htmlString += `</table><br>${jsonData.length} records found.`
-        document.getElementById('prueba').innerHTML = htmlString
+        document.getElementById('showsuperheroes').innerHTML = htmlString
     }})
 }
 
@@ -197,7 +210,6 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
     
 
     function addSuperhero(align, alive, eye, hair, id, sex, name ){
-        viewJSONData(superheroesToView)
         console.log("funcion addSuperhero")
         let newSuperhero = {identificationNumber:uniqueId, align: align, alive:alive ,eye:eye, hair:hair, id:id, sex:sex, name:name }
         console.log(newSuperhero)
