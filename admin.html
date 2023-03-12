@@ -9,7 +9,7 @@
     <script src="admin.js" type="text/javascript"></script>
     <!--<script src="superheroes.js" type="text/javascript"> </script>-->
     <style>
-        #searchByName, #searchByColour, #everything {
+        #searchByName, #searchByColour, #FormToAddSuperhero, #formToModifySuperhero {
             display: none;
         }
     </style>
@@ -20,10 +20,9 @@
 <body>
 
 
-
     <!-- OCULTO EL LOG IN -->
-    <!-- 
-    <section id="log-in-part">
+    
+    <section id="log-in-part" style="display:none;">
         <div class="form-box">
             <div class="form-value">
                 <form action="">
@@ -46,12 +45,9 @@
     </section>
     
     
- abajo poner style="display:none;"
-    !-->
+ <!-- abajo poner style="display:none;"!-->
     
-
-
-    
+        
     <div id="page"> 
         <header>
             <div class="interior">
@@ -60,161 +56,166 @@
                 <ul>
                   <li><a onclick="viewJSONData(superheroesToView)"> Display All </a></li>
                   <li><a onclick="showSearchByName()"> Search By Name </a></li>
+                  <li><a onclick="showAddSuperhero()"> Add Superhero </a></li>
+                  <li><a onclick="showModifySuperhero()"> Modify Superhero </a></li>
 
                 </ul>
               </nav>
             </div>
         </header>
-    
 
+        <div id="Warning" class="warning"> 
+            <p> <ion-icon name="warning-outline" ></ion-icon> <b style="color: red; background-color: yellow; "> WARNING : This website is designed by and for villains. We're tired of these "superheroes" killing our plans. Here is a table with all the information we have about them. Remember that your continued use of our services is at your own risk.</b> </p> <br> <br>
+        
 
-         
-    <div id = "searchByName"> 
-        <fieldset> 
-            <legend > Search By Name </legend>
-            <input  type="search" oninput="search(this.value)" placeholder="Enter a name"/>
-            <button onclick="searchByName(document.getElementById('name'))">Search </button>
-        </fieldset>
-    </div>
-    <!-- FORMULARIO PARA AGREGAR SUPERHEROE-->
-    <div id="FormToAddSuperhero">
-        <fieldset>
-            <legend>Add your Superhero</legend>
-            <label for="align">Align: </label> <br>
-            <select name="align" id="alignid">
-                <option value="good characters"> good  </option>
-                <option value="bad characters"> bad  </option>
-                <option value="neutral characters"> neutral </option>
-                <option value="null"> null </option>
-            </select>  
-            <!--  living and deceased characters -->
-            <br>
-            <label for="alive">Alive: </label> <br>
-            <select name="alive" id="aliveid">
-                <option value="living characters"> living </option>
-                <option value="deceased characters"> deceased </option>
-            </select>    
-            <br>
-            <!-- eye colour (a dropdown) -->
-            <label for="eye_color">Eye color:</label> <br>
-            <select name="eye" id="eye_color">
-                <option value="blue">blue</option>
-                <option value="brown">brown</option>
-                <option value="green">green</option>
-                <option value="purple">purple</option>
-                <option value="black">black</option>
-                <option value="blue">blue</option>
-                <option value="white">white</option>
-                <option value="red">red</option>
-            </select>
-            <br>
-            <!-- hair color -->
-            <label for="hair">Hair Color: </label>
-            <select name="hair" id="hair">
-                <option value="black">black</option>
-                <option value="white">white</option>
-                <option value="brown">brown</option>
-                <option value="blond">blond</option>
-                <option value="red">red</option>
-                <option value="green">gree</option>
-                <option value="white">white</option>
-                <option value="red">red</option>
-                <option value="null">null</option>
-            </select>
-            <br>
-            <!-- id (identity: secret or public) -->
-            <label>Choose the identity: </label>
-            <select name="identity" id="identity">
-                <option value="public identity "> Public</option>
-                <option value="secret identity"> Secret </option> 
-            </select>
-            <br> 
-            <!-- sex -->
-            <label>Choose the sex: </label>
-            <select name="sex" id="sex">
-                <option value="male characters"> Male</option>
-                <option value="female characters"> Female </option> 
-            </select>
-            <br>
-            <label> Name </legend> 
-            <input type="text" id="namesuperhero" placeholder="name">
-            <button onclick="addSuperhero(document.getElementById('alignid').value, document.getElementById('aliveid').value, document.getElementById('eye_color').value, document.getElementById('hair').value, document.getElementById('identity').value, document.getElementById('sex').value, document.getElementById('namesuperhero').value)"> Add Superhero </button>
-        </fieldset>
-    </div>
+                <div id = "searchByName"> 
+                    <fieldset> 
+                        <legend > Search By Name </legend>
+                        <input  type="search" oninput="search(this.value)" placeholder="Enter a name"/>
+                        <button onclick="searchByName(document.getElementById('name'))">Search </button>
+                    </fieldset>
+                </div>
+                <!-- FORMULARIO PARA AGREGAR SUPERHEROE-->
+                <div id="FormToAddSuperhero">
+                    <fieldset>
+                        <legend>Add your Superhero</legend>
+                        <label for="align">Align: </label> <br>
+                        <select name="align" id="alignid">
+                            <option value="good characters"> good  </option>
+                            <option value="bad characters"> bad  </option>
+                            <option value="neutral characters"> neutral </option>
+                            <option value="null"> null </option>
+                        </select>  
+                        <!--  living and deceased characters -->
+                        <br>
+                        <label for="alive">Alive: </label> <br>
+                        <select name="alive" id="aliveid">
+                            <option value="living characters"> living </option>
+                            <option value="deceased characters"> deceased </option>
+                        </select>    
+                        <br>
+                        <!-- eye colour (a dropdown) -->
+                        <label for="eye_color">Eye color:</label> <br>
+                        <select name="eye" id="eye_color">
+                            <option value="blue">blue</option>
+                            <option value="brown">brown</option>
+                            <option value="green">green</option>
+                            <option value="purple">purple</option>
+                            <option value="black">black</option>
+                            <option value="blue">blue</option>
+                            <option value="white">white</option>
+                            <option value="red">red</option>
+                        </select>
+                        <br>
+                        <!-- hair color -->
+                        <label for="hair">Hair Color: </label>
+                        <select name="hair" id="hair">
+                            <option value="black">black</option>
+                            <option value="white">white</option>
+                            <option value="brown">brown</option>
+                            <option value="blond">blond</option>
+                            <option value="red">red</option>
+                            <option value="green">gree</option>
+                            <option value="white">white</option>
+                            <option value="red">red</option>
+                            <option value="null">null</option>
+                        </select>
+                        <br>
+                        <!-- id (identity: secret or public) -->
+                        <label>Choose the identity: </label>
+                        <select name="identity" id="identity">
+                            <option value="public identity "> Public</option>
+                            <option value="secret identity"> Secret </option> 
+                        </select>
+                        <br> 
+                        <!-- sex -->
+                        <label>Choose the sex: </label>
+                        <select name="sex" id="sex">
+                            <option value="male characters"> Male</option>
+                            <option value="female characters"> Female </option> 
+                        </select>
+                        <br>
+                        <label> Name </legend> 
+                        <input type="text" id="namesuperhero" placeholder="name">
+                        <button onclick="addSuperhero(document.getElementById('alignid').value, document.getElementById('aliveid').value, document.getElementById('eye_color').value, document.getElementById('hair').value, document.getElementById('identity').value, document.getElementById('sex').value, document.getElementById('namesuperhero').value)"> Add Superhero </button>
+                    </fieldset>
+                </div>
 
-    <!-- FORMULARIO PARA MODIFICAR SUPERHEROE-->
-    <div id="formToModifySuperhero">
-        <fieldset> 
-            <input type="text" id="IdentificationNumbermodify" placeholder="IdentificationNumber">
-            <label for="align">Align: </label> <br>
-            <select name="align" id="alignmodify">
-                <option value="good characters"> good  </option>
-                <option value="bad characters"> bad  </option>
-                <option value="neutral characters"> neutral </option>
-                <option value="null"> null </option>
-            </select>  
-        <!--  living and deceased characters -->
-        <br>
-        <label for="alive">Alive: </label> <br>
-        <select name="alive" id="alivemodify">
-            <option value="living characters"> living </option>
-            <option value="deceased characters"> deceased </option>
-        </select>    
-        <br>
+                <!-- FORMULARIO PARA MODIFICAR SUPERHEROE-->
+                <div id="formToModifySuperhero" class="select">
+                    <fieldset> 
+                        <legend>Modify  Superhero</legend>
+                        <input type="text" id="IdentificationNumbermodify" placeholder="IdentificationNumber">
+                        <label for="align">Align: </label> <br>
+                        <select name="align" id="alignmodify">
+                            <option value="good characters"> good  </option>
+                            <option value="bad characters"> bad  </option>
+                            <option value="neutral characters"> neutral </option>
+                            <option value="null"> null </option>
+                        </select>  
+                    <!--  living and deceased characters -->
+                    <br>
+                    <label for="alive">Alive: </label> <br>
+                    <select name="alive" id="alivemodify">
+                        <option value="living characters"> living </option>
+                        <option value="deceased characters"> deceased </option>
+                    </select>    
+                    <br>
 
-        <!-- eye colour (a dropdown) -->
-        <label for="eye_color">Eye color:</label> <br>
-        <select name="eye" id="eye_colormodify">
-            <option value="blue">blue</option>
-            <option value="brown">brown</option>
-            <option value="green">green</option>
-            <option value="purple">purple</option>
-            <option value="black">black</option>
-            <option value="blue">blue</option>
-            <option value="white">white</option>
-            <option value="red">red</option>
-        </select>
-        <br>
-        <!-- hair color -->
-        <label for="hair">Hair Color: </label>
-        <select name="hair" id="hairmodify">
-            <option value="black">black</option>
-            <option value="white">white</option>
-            <option value="brown">brown</option>
-            <option value="blond">blond</option>
-            <option value="red">red</option>
-            <option value="green">gree</option>
-            <option value="white">white</option>
-            <option value="red">red</option>
-            <option value="null">null</option>
-        </select>
-        <br>
-        <!-- id (identity: secret or public) -->
-        <label>Choose the identity: </label>
-        <select name="identity" id="identitymodify">
-            <option value="public identity "> Public</option>
-            <option value="secret identity"> Secret </option> 
-        </select>
-        <br> 
-        <!-- sex -->
-        <label>Choose the sex: </label>
-        <select name="sex" id="sexmodify">
-            <option value="male characters"> Male</option>
-            <option value="female characters"> Female </option> 
-        </select>
-        <br>
-        <label> Name </legend> 
-            <input type="text" id="namemodify" placeholder="name">
-        <button onclick="modifySuperhero(document.getElementById('IdentificationNumbermodify').value, document.getElementById('alignmodify').value, document.getElementById('alivemodify').value, document.getElementById('eye_colormodify').value, document.getElementById('hairmodify').value, document.getElementById('identitymodify').value, document.getElementById('sexmodify').value, document.getElementById('namemodify').value)"> Modify Superhero </button>
-        </fieldset>
-    </div>
+                    <!-- eye colour (a dropdown) -->
+                    <label for="eye_color">Eye color:</label> <br>
+                    <select name="eye" id="eye_colormodify">
+                        <option value="blue">blue</option>
+                        <option value="brown">brown</option>
+                        <option value="green">green</option>
+                        <option value="purple">purple</option>
+                        <option value="black">black</option>
+                        <option value="blue">blue</option>
+                        <option value="white">white</option>
+                        <option value="red">red</option>
+                    </select>
+                    <br>
+                    <!-- hair color -->
+                    <label for="hair">Hair Color: </label>
+                    <select name="hair" id="hairmodify">
+                        <option value="black">black</option>
+                        <option value="white">white</option>
+                        <option value="brown">brown</option>
+                        <option value="blond">blond</option>
+                        <option value="red">red</option>
+                        <option value="green">gree</option>
+                        <option value="white">white</option>
+                        <option value="red">red</option>
+                        <option value="null">null</option>
+                    </select>
+                    <br>
+                    <!-- id (identity: secret or public) -->
+                    <label>Choose the identity: </label>
+                    <select name="identity" id="identitymodify">
+                        <option value="public identity "> Public</option>
+                        <option value="secret identity"> Secret </option> 
+                    </select>
+                    <br> 
+                    <!-- sex -->
+                    <label>Choose the sex: </label>
+                    <select name="sex" id="sexmodify">
+                        <option value="male characters"> Male</option>
+                        <option value="female characters"> Female </option> 
+                    </select>
+                    <br>
+                    <label> Name </legend> 
+                        <input type="text" id="namemodify" placeholder="name">
+                    <button onclick="modifySuperhero(document.getElementById('IdentificationNumbermodify').value, document.getElementById('alignmodify').value, document.getElementById('alivemodify').value, document.getElementById('eye_colormodify').value, document.getElementById('hairmodify').value, document.getElementById('identitymodify').value, document.getElementById('sexmodify').value, document.getElementById('namemodify').value)"> Modify Superhero </button>
+                    </fieldset>
+                </div>
 
-    <div id = "iddesuperheroes"> 
+                <div id = "iddesuperheroes"> 
 
-    </div>
-    <div id="showsuperheroes"> 
+                </div>
+                <div id="showsuperheroes"> 
 
-    </div>
+                </div>
+                    
 </div>
 
 

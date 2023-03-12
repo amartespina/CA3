@@ -13,6 +13,8 @@ let sortAscendingOrder = true
 let superheroesToView = []
 let primeravez = true
 let hideSearch = true
+let hideAddSuperhero = true
+let hideModifySuperhero = true
 let uniqueId = 1
 // Json data tiene los usuarios y contraseñas 
 
@@ -21,6 +23,7 @@ let peopleData
 function prueba(argumento){
     console.log(argumento)
 }
+// FUunciones show 
 function showSearchByName(){
     
     if(hideSearch){
@@ -31,7 +34,27 @@ function showSearchByName(){
 
 }
 
+function showAddSuperhero(){
+    
+    if(hideAddSuperhero){
+        document.getElementById("FormToAddSuperhero").style.display = "block";
+        hideAddSuperhero = false
+    }
+    else {document.getElementById("FormToAddSuperhero").style.display = "none"; hideAddSuperhero=true}
 
+}
+
+function showModifySuperhero(){
+    
+    if(hideModifySuperhero){
+        document.getElementById("formToModifySuperhero").style.display = "block";
+        hideModifySuperhero = false
+    }
+    else {document.getElementById("formToModifySuperhero").style.display = "none"; hideModifySuperhero=true}
+
+}
+
+// Leer Usuarios 
     window.onload = () =>
 {
     let url = `users.json`      /* name of the JSON file */
@@ -41,9 +64,12 @@ function showSearchByName(){
     .then(jsonData => 
     {
         peopleData = jsonData
+        console.log(peopleData)
     }
     )
 }
+
+
 
 
 
@@ -80,6 +106,7 @@ function viewJSONData(arrayToView){
                             <th> Id </th>
                             <th> Sex </th>
                             <th> Name </th>
+                            <th>  </th>
                      </tr>
             </thead>`
         arrayToView.map(superhero =>
@@ -99,7 +126,8 @@ function viewJSONData(arrayToView){
                 </tr>
             </tbody> `
         })
-        htmlString += `</table><br>${jsonData.length} records found.`
+        //htmlString += `</table><br>${jsonData.length} records found.`
+        htmlString += `</table>`
         document.getElementById('showsuperheroes').innerHTML = htmlString
     }})
 }
@@ -158,32 +186,60 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
 }
 
 
+ 
     function UserValidation(){
-        
         let username= document.getElementById('email').value
         let password= document.getElementById('password').value
-        console.log('la contrasña es' + username)
+        console.log('el username es  es' + username)
         console.log('la contrasña es' + password)
         //let jsonUser = JSON.stringify(peopleData)
          for (var i in peopleData){
             if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "true") {
-                
                 alert("Welcome " + peopleData[i].name + " you are administrator")
                 document.getElementById("log-in-part").style.display= 'none';
                 document.getElementById("page").style.display='block';
-                
-                break;
+                console.log(peopleData[i])   
             }
-            if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "false") {
+            else if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "false") {
+                console.log("caso no adminsitrador")
                 alert("Welcome " + peopleData[i].name + " you are not administrator")   
-                break;
+                console.log(peopleData[i])  
             }
-            else alert("You are not registred")
-            break
-         }
-               
+            else {
+                alert("You are not registred")}
 
+            
+        }
+         
+        
    }
+
+   
+
+   
+
+
+   
+
+/** 
+    
+    peopleData.map(person =>{
+         if(person.email=== username && person.password===password){
+            alert("funciona")
+    } 
+
+
+        }
+        else {alert("no estas registrado")
+    }
+        )
+    }
+    */ 
+
+
+    
+
+ 
 
    function search(value){
     searchValue = value
