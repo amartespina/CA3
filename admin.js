@@ -18,14 +18,15 @@ let hideModifySuperhero = true
 let uniqueId = 1
 let encontrado = false 
 let admin = false 
+
 // Json data tiene los usuarios y contraseñas 
 
-let peopleData
+
 
 function prueba(argumento){
     console.log(argumento)
 }
-// FUunciones show 
+// Funciones show 
 function showSearchByName(){
     
     if(hideSearch){
@@ -56,7 +57,7 @@ function showModifySuperhero(){
 
 }
 
-// Leer Usuarios 
+// READ USERS AND VALIDATION 
     window.onload = () =>
 {
     let url = `users.json`      /* name of the JSON file */
@@ -71,6 +72,38 @@ function showModifySuperhero(){
     )
 }
 
+function UserValidation(){
+    let username= document.getElementById('email').value
+    let password= document.getElementById('password').value
+
+    console.log('el username es  es' + username)
+    console.log('la contrasña es' + password)
+
+    //let jsonUser = JSON.stringify(peopleData)
+    peopleData.forEach(person => {
+        if(person.email === username && person.password=== password && person.isAdministrator==="true"){
+            encontrado  = true 
+            admin = true 
+        }
+        if(person.email === username && person.password=== password && person.isAdministrator==="false"){
+            encontrado  = true 
+            admin = false 
+        }
+    })
+    if(!encontrado){ document.getElementById("nomatch").style.display='block';}
+    if(encontrado && admin){console.log("welcomeadmin"  )
+        document.getElementById("page").style.display='block';
+        document.getElementById("log-in-part").style.display= 'none';   
+        document.getElementById("navmodifysuperhero").style.display='block';
+        document.getElementById("navaddsuperhero").style.display='block';
+        
+    } 
+    if(encontrado && !admin){ console.log("welcome not admin")
+    document.getElementById("page").style.display='block';
+    document.getElementById("log-in-part").style.display= 'none'
+    }
+        
+}
 
 
 
@@ -93,20 +126,18 @@ function viewJSONData(arrayToView){
     }
     {
 
-    /**
-     * model: car["car model"]
-     */
         htmlString = `
         <table class="content-table">
             <thead>             
                     <tr>
-                            <th> Identification <br> Number </th>    
-                            <th> Align </th>
-                            <th onclick="sortResultsbyAlive()"> Alive </th>
-                            <th> Eye </th>
-                            <th> Hair </th>
-                            <th> Id </th>
-                            <th> Sex </th>
+                            <th> Identification <br> Number </th>
+                              
+                            <th> Align <ion-icon name="caret-down-outline" onclick="sortResultsbyAlign()"></ion-icon> </th>
+                            <th> Alive <ion-icon name="caret-down-outline" onclick="sortResultsbyAlive()"></ion-icon></th>
+                            <th> Eye <ion-icon name="caret-down-outline"></ion-icon> </th>
+                            <th> Hair <ion-icon name="caret-down-outline"></ion-icon></th>
+                            <th> Id <ion-icon name="caret-down-outline"></ion-icon></th>
+                            <th> Sex <ion-icon name="caret-down-outline"></ion-icon></th>
                             <th> Name </th>`
     
                             if(admin){
@@ -141,27 +172,9 @@ function viewJSONData(arrayToView){
     }})
 }
 
-function deleteSuperhero(id)
-{
-    console.log("funcion eliminar")
-    console.log(id)
-    //selectedIndex corresponds to the array key
-    let selectedIndex = -1
-    //iterate through the cars array to find the element to remove
-    superheroesToView.forEach((superhero, index) => {
-        if (superhero.identificationNumber === parseInt(id))
-        {
-            selectedIndex = index
-        }
-    })
-    if (selectedIndex >= 0)
-    {
-        superheroesToView.splice(selectedIndex, 1)   
-        console.log(superheroesToView)     
-    }
-    viewJSONData(superheroesToView)
-}
 
+
+// ADD  MODIFY AND DELETE 
 function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, name)
 
 {
@@ -183,43 +196,44 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
     })
     viewJSONData(superheroesToView)
 }
+function addSuperhero(align, alive, eye, hair, id, sex, name ){
+    console.log("funcion addSuperhero")
+    let newSuperhero = {identificationNumber:uniqueId, align: align, alive:alive ,eye:eye, hair:hair, id:id, sex:sex, name:name }
+    console.log(newSuperhero)
+    superheroesToView.push(newSuperhero)
+    uniqueId++
+    viewJSONData(superheroesToView)
 
+}
 
- function UserValidation(){
-        let username= document.getElementById('email').value
-        let password= document.getElementById('password').value
-
-        console.log('el username es  es' + username)
-        console.log('la contrasña es' + password)
-
-        //let jsonUser = JSON.stringify(peopleData)
-        peopleData.forEach(person => {
-            if(person.email === username && person.password=== password && person.isAdministrator==="true"){
-                encontrado  = true 
-                admin = true 
-            }
-            if(person.email === username && person.password=== password && person.isAdministrator==="false"){
-                encontrado  = true 
-                admin = false 
-            }
-        })
-        if(!encontrado){ document.getElementById("nomatch").style.display='block';}
-        if(encontrado && admin){console.log("welcomeadmin"  )
-            document.getElementById("page").style.display='block';
-            document.getElementById("log-in-part").style.display= 'none';   
-            document.getElementById("navmodifysuperhero").style.display='block';
-            document.getElementById("navaddsuperhero").style.display='block';
-            
-        } 
-        if(encontrado && !admin){ console.log("welcome not admin")
-        document.getElementById("page").style.display='block';
-        document.getElementById("log-in-part").style.display= 'none'
+function deleteSuperhero(id)
+{
+    console.log("funcion eliminar")
+    console.log(id)
+    //selectedIndex corresponds to the array key
+    let selectedIndex = -1
+    //iterate through the cars array to find the element to remove
+    superheroesToView.forEach((superhero, index) => {
+        if (superhero.identificationNumber === parseInt(id))
+        {
+            selectedIndex = index
         }
-            
- }
-     
+    })
+    if (selectedIndex >= 0)
+    {
+        superheroesToView.splice(selectedIndex, 1)   
+        console.log(superheroesToView)     
+    }
+    viewJSONData(superheroesToView)
+}
+
+
+
 
      
+
+
+ // Funciones Search 
 
    function search(value){
     searchValue = value
@@ -233,32 +247,47 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
     viewJSONData(displayedsuperheroes)}
 }
 
-    function searchByAlign(align){
+function searchByAlign(align){
         const selectedHeroes = superheroes.filter(superhero => superhero.i=== align)
         viewJSONData(selectedHeroes)
     }   
-
-    function searchByEye(eye){
+ function searchByEye(eye){
         const selectedHeroesEye = superheroes.filter(superhero => superhero.eye===eye)
         viewJSONData(selectedHeroesEye)
     }
     
     
 
-    function addSuperhero(align, alive, eye, hair, id, sex, name ){
-        console.log("funcion addSuperhero")
-        let newSuperhero = {identificationNumber:uniqueId, align: align, alive:alive ,eye:eye, hair:hair, id:id, sex:sex, name:name }
-        console.log(newSuperhero)
-        superheroesToView.push(newSuperhero)
-        uniqueId++
-        viewJSONData(superheroesToView)
-
-    }
 
 
-    function sortResultsbyAlive(){
-        console.log("estamos en sortResults")
+// Funciones Sort 
+
+function sortResultsbyAlign(){
+    console.log("estamos en sortResults")
+    viewJSONData()
+    let superheroesToSort = [...superheroesToView]
     if (sortAscendingOrder){
+        console.log(superheroesToSort)
+        // sorted in ascending order
+        // sort the employee array by forename in descending order
+        superheroesToSort.sort((a, b) => a.align < b.align?1:-1) 
+        sortAscendingOrder = false
+                            }
+    else{
+        // sorted in descending order
+        // sort the employee array by forename in ascending order
+        superheroesToSort.sort((a, b) =>  a.align< b.align?-1:1) 
+        sortAscendingOrder = true   
+        }  
+    // output the resulting array in a table
+    viewJSONData(superheroesToSort)
+}
+function sortResultsbyAlive(){
+    console.log("estamos en sortResults")
+    viewJSONData()
+    let superheroesToSort = [...superheroesToView]
+    if (sortAscendingOrder){
+        console.log(superheroesToSort)
         // sorted in ascending order
         // sort the employee array by forename in descending order
         superheroesToSort.sort((a, b) => a.alive < b.alive?1:-1) 
@@ -272,8 +301,66 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
         }  
     // output the resulting array in a table
     viewJSONData(superheroesToSort)
-    console.log(superheroesToSort)
-
+}
+function sortResultsbyEye(){
+    console.log("estamos en sortResults")
+    viewJSONData()
+    let superheroesToSort = [...superheroesToView]
+    if (sortAscendingOrder){
+        console.log(superheroesToSort)
+        // sorted in ascending order
+        // sort the employee array by forename in descending order
+        superheroesToSort.sort((a, b) => a.eye < b.eye?1:-1) 
+        sortAscendingOrder = false
+                            }
+    else{
+        // sorted in descending order
+        // sort the employee array by forename in ascending order
+        superheroesToSort.sort((a, b) =>  a.eye< b.eye?-1:1) 
+        sortAscendingOrder = true   
+        }  
+    // output the resulting array in a table
+    viewJSONData(superheroesToSort)
+}
+function sortResultsbyId(){
+    console.log("estamos en sortResults")
+    viewJSONData()
+    let superheroesToSort = [...superheroesToView]
+    if (sortAscendingOrder){
+        console.log(superheroesToSort)
+        // sorted in ascending order
+        // sort the employee array by forename in descending order
+        superheroesToSort.sort((a, b) => a.Id < b.Id?1:-1) 
+        sortAscendingOrder = false
+                            }
+    else{
+        // sorted in descending order
+        // sort the employee array by forename in ascending order
+        superheroesToSort.sort((a, b) =>  a.Id< b.Id?-1:1) 
+        sortAscendingOrder = true   
+        }  
+    // output the resulting array in a table
+    viewJSONData(superheroesToSort)
+}
+function sortResultsbySex(){
+    console.log("estamos en sortResults")
+    viewJSONData()
+    let superheroesToSort = [...superheroesToView]
+    if (sortAscendingOrder){
+        console.log(superheroesToSort)
+        // sorted in ascending order
+        // sort the employee array by forename in descending order
+        superheroesToSort.sort((a, b) => a.sex < b.sex?1:-1) 
+        sortAscendingOrder = false
+                            }
+    else{
+        // sorted in descending order
+        // sort the employee array by forename in ascending order
+        superheroesToSort.sort((a, b) =>  a.sex< b.sex?-1:1) 
+        sortAscendingOrder = true   
+        }  
+    // output the resulting array in a table
+    viewJSONData(superheroesToSort)
 }
 
 

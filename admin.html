@@ -22,7 +22,7 @@
 
     <!-- OCULTO EL LOG IN -->
     
-    <section id="log-in-part" >
+    <section id="log-in-part"  style="display:none;">
         <div class="form-box">
             <div class="form-value">
                 <form action="">
@@ -51,13 +51,14 @@
  <!-- abajo poner style="display:none;"!-->
     
         
-    <div id="page" style="display:none;" > 
+    <div id="page"  > 
         <div id = "barradenavegacion" class="navbar">
             <a class="logo" ><img src="descarga.png" alt="Logo"></a>
             <nav class="navegacion">
                 <ul>
                     <li><a style="cursor: pointer" onclick="viewJSONData(superheroesToView)"> Display All </a></li>
                     <li><a onclick="showSearchByName()"> Search By Name </a></li>
+                    <li><a onclick="sortResultsByAlive()"> Sort Results by Alive By Name </a></li>
                     <li><a  id ="navaddsuperhero" onclick="showAddSuperhero()" style="display:none;"> Add Superhero </a></li>
                     <li><a id = "navmodifysuperhero" onclick="showModifySuperhero()" style="display:none;"> Modify Superhero </a></li>
                 </ul>
