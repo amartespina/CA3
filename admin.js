@@ -16,6 +16,8 @@ let hideSearch = true
 let hideAddSuperhero = true
 let hideModifySuperhero = true
 let uniqueId = 1
+let encontrado = false 
+let admin = false 
 // Json data tiene los usuarios y contraseñas 
 
 let peopleData
@@ -105,9 +107,14 @@ function viewJSONData(arrayToView){
                             <th> Hair </th>
                             <th> Id </th>
                             <th> Sex </th>
-                            <th> Name </th>
-                            <th>  </th>
-                     </tr>
+                            <th> Name </th>`
+    
+                            if(admin){
+                             console.log("entramosalif")
+                            htmlString+= `<th> </th>`
+                            } 
+        htmlString+=`
+                    </tr>
             </thead>`
         arrayToView.map(superhero =>
         {
@@ -121,9 +128,13 @@ function viewJSONData(arrayToView){
                     <td>${superhero.hair}</td>
                     <td>${superhero.id}</td>
                     <td>${superhero.sex}</td>
-                    <td>${superhero.name}</td>
-                    <td><button onclick="deleteSuperhero(${superhero.identificationNumber})">Delete</button></td>
-                </tr>
+                    <td>${superhero.name}</td>`
+                    if(admin){
+                        console.log("entramosalif")
+                    htmlString+= `<td  ><button onclick="deleteSuperhero(${superhero.identificationNumber})">Delete</button></td>`
+                    }
+
+               htmlString += `</tr>
             </tbody> `
         })
         //htmlString += `</table><br>${jsonData.length} records found.`
@@ -158,16 +169,7 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
 {
     console.log("modifysuperheroe")
     console.log(IdentificationNumber)
-    //check if the car matches one of the cars in the dataset
-    console.log()
-    console.log(align)
-    console.log(alive)
-    console.log(eye)
-    console.log(hair)
-    console.log(id)
-    console.log(sex)
-    console.log(name)
-    //iterate through all cars
+
     superheroesToView.forEach(superhero => {
         
         if (superhero.identificationNumber === parseInt(IdentificationNumber))
@@ -190,51 +192,79 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
     function UserValidation(){
         let username= document.getElementById('email').value
         let password= document.getElementById('password').value
+
         console.log('el username es  es' + username)
         console.log('la contrasña es' + password)
+
         //let jsonUser = JSON.stringify(peopleData)
-         for (var i in peopleData){
-            if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "true") {
-                alert("Welcome " + peopleData[i].name + " you are administrator")
-                document.getElementById("log-in-part").style.display= 'none';
-                document.getElementById("page").style.display='block';
-                console.log(peopleData[i])   
+        peopleData.forEach(person => {
+            if(person.email === username && person.password=== password && person.isAdministrator==="true"){
+                encontrado  = true 
+                admin = true 
             }
-            else if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "false") {
-                console.log("caso no adminsitrador")
-                alert("Welcome " + peopleData[i].name + " you are not administrator")   
-                console.log(peopleData[i])  
+            if(person.email === username && person.password=== password && person.isAdministrator==="false"){
+                encontrado  = true 
+                admin = false 
             }
-            else {
-                alert("You are not registred")}
-
+        })
+        if(!encontrado){ alert("you are not registred")}
+        if(encontrado && admin){
+            alert("Welcome admin" )
+            document.getElementById("page").style.display='block';
+            document.getElementById("log-in-part").style.display= 'none';   
+            document.getElementById("navmodifysuperhero").style.display='block';
+            document.getElementById("navaddsuperhero").style.display='block';
             
+        } 
+        if(encontrado && !admin){ alert("welcome not admin")
+        document.getElementById("page").style.display='block';
+        document.getElementById("log-in-part").style.display= 'none'
         }
-         
+            
+ }
+     
+ 
+
         
-   }
-
-   
-
-   
 
 
-   
-
-/** 
-    
-    peopleData.map(person =>{
-         if(person.email=== username && person.password===password){
-            alert("funciona")
-    } 
-
-
+   /** 
+   function UserValidation(){
+    let username= document.getElementById('email').value
+    let password= document.getElementById('password').value
+    console.log('el username es  es' + username)
+    console.log('la contrasña es' + password)
+    //let jsonUser = JSON.stringify(peopleData)
+     for (var i in peopleData){
+        if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "true") {
+            alert("Welcome " + peopleData[i].name + " you are administrator")
+            document.getElementById("log-in-part").style.display= 'none';
+            document.getElementById("page").style.display='block';
+            console.log(peopleData[i])   
         }
-        else {alert("no estas registrado")
+        else if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "false") {
+            console.log("caso no adminsitrador")
+            alert("Welcome " + peopleData[i].name + " you are not administrator")   
+            console.log(peopleData[i])  
+        }
+        else {
+            alert("You are not registred")}
+
+        
     }
-        )
-    }
+}
+
     */ 
+     
+    
+
+
+   
+
+   
+
+
+   
 
 
     
