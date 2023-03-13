@@ -38,8 +38,8 @@
                         <label for="">Password</label>
                     </div>
                     <button id="loginbutton" class="loginbutton" type="button" onclick="UserValidation()">Log In!</button>
-                    <div class="register"> 
-                        Welcome
+                    <div id="nomatch" class="register" style="display:none;"! > 
+                        Please enter a valid username and password
                     </div>
 
                 </form>
@@ -56,7 +56,7 @@
             <a class="logo" ><img src="descarga.png" alt="Logo"></a>
             <nav class="navegacion">
                 <ul>
-                    <li><a onclick="viewJSONData(superheroesToView)"> Display All </a></li>
+                    <li><a style="cursor: pointer" onclick="viewJSONData(superheroesToView)"> Display All </a></li>
                     <li><a onclick="showSearchByName()"> Search By Name </a></li>
                     <li><a  id ="navaddsuperhero" onclick="showAddSuperhero()" style="display:none;"> Add Superhero </a></li>
                     <li><a id = "navmodifysuperhero" onclick="showModifySuperhero()" style="display:none;"> Modify Superhero </a></li>

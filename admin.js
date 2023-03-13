@@ -1,5 +1,5 @@
  /** Añado pero al darle a mostrar me los muestra x2
-     * Al eliminar tambien. 
+     * Al eliminar taconsolembien. 
      *
      *  */ 
     //let superheroes= $.getJSON("https://pkgstore.datahub.io/five-thirty-eight/comic-characters/dc-wikia-data_json/data/8b35699325a97475673d4255ab21d4df/dc-wikia-data_json.json") 
@@ -110,7 +110,6 @@ function viewJSONData(arrayToView){
                             <th> Name </th>`
     
                             if(admin){
-                             console.log("entramosalif")
                             htmlString+= `<th> </th>`
                             } 
         htmlString+=`
@@ -130,7 +129,6 @@ function viewJSONData(arrayToView){
                     <td>${superhero.sex}</td>
                     <td>${superhero.name}</td>`
                     if(admin){
-                        console.log("entramosalif")
                     htmlString+= `<td  ><button onclick="deleteSuperhero(${superhero.identificationNumber})">Delete</button></td>`
                     }
 
@@ -167,8 +165,7 @@ function deleteSuperhero(id)
 function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, name)
 
 {
-    console.log("modifysuperheroe")
-    console.log(IdentificationNumber)
+
 
     superheroesToView.forEach(superhero => {
         
@@ -188,8 +185,7 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
 }
 
 
- 
-    function UserValidation(){
+ function UserValidation(){
         let username= document.getElementById('email').value
         let password= document.getElementById('password').value
 
@@ -207,26 +203,21 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
                 admin = false 
             }
         })
-        if(!encontrado){ alert("you are not registred")}
-        if(encontrado && admin){
-            alert("Welcome admin" )
+        if(!encontrado){ document.getElementById("nomatch").style.display='block';}
+        if(encontrado && admin){console.log("welcomeadmin"  )
             document.getElementById("page").style.display='block';
             document.getElementById("log-in-part").style.display= 'none';   
             document.getElementById("navmodifysuperhero").style.display='block';
             document.getElementById("navaddsuperhero").style.display='block';
             
         } 
-        if(encontrado && !admin){ alert("welcome not admin")
+        if(encontrado && !admin){ console.log("welcome not admin")
         document.getElementById("page").style.display='block';
         document.getElementById("log-in-part").style.display= 'none'
         }
             
  }
      
- 
-
-        
-
 
    /** 
    function UserValidation(){
@@ -256,20 +247,6 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
 
     */ 
      
-    
-
-
-   
-
-   
-
-
-   
-
-
-    
-
- 
 
    function search(value){
     searchValue = value
