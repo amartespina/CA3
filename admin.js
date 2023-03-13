@@ -134,10 +134,10 @@ function viewJSONData(arrayToView){
                               
                             <th> Align <ion-icon name="caret-down-outline" onclick="sortResultsbyAlign()"></ion-icon> </th>
                             <th> Alive <ion-icon name="caret-down-outline" onclick="sortResultsbyAlive()"></ion-icon></th>
-                            <th> Eye <ion-icon name="caret-down-outline"></ion-icon> </th>
-                            <th> Hair <ion-icon name="caret-down-outline"></ion-icon></th>
-                            <th> Id <ion-icon name="caret-down-outline"></ion-icon></th>
-                            <th> Sex <ion-icon name="caret-down-outline"></ion-icon></th>
+                            <th> Eye <ion-icon name="caret-down-outline" onclick="sortResultsbyEye()"></ion-icon> </th>
+                            <th> Hair <ion-icon name="caret-down-outline" onclick="sortResultsbyHair()"></ion-icon></th>
+                            <th> Id <ion-icon name="caret-down-outline" onclick="sortResultsbyId()"></ion-icon></th>
+                            <th> Sex <ion-icon name="caret-down-outline" onclick="sortResultsbySex()"></ion-icon></th>
                             <th> Name </th>`
     
                             if(admin){
@@ -322,6 +322,27 @@ function sortResultsbyEye(){
     // output the resulting array in a table
     viewJSONData(superheroesToSort)
 }
+function sortResultsbyHair(){
+    console.log("estamos en sortResults")
+    //viewJSONData()
+    let superheroesToSort = [...superheroesToView]
+    if (sortAscendingOrder){
+        console.log(superheroesToSort)
+        // sorted in ascending order
+        // sort the employee array by forename in descending order
+        superheroesToSort.sort((a, b) => a.hair < b.hair?1:-1) 
+        sortAscendingOrder = false
+                            }
+    else{
+        // sorted in descending order
+        // sort the employee array by forename in ascending order
+        superheroesToSort.sort((a, b) =>  a.hair< b.hair?-1:1) 
+        sortAscendingOrder = true   
+        }  
+    // output the resulting array in a table
+    viewJSONData(superheroesToSort)
+}
+
 function sortResultsbyId(){
     console.log("estamos en sortResults")
     viewJSONData()
@@ -330,13 +351,13 @@ function sortResultsbyId(){
         console.log(superheroesToSort)
         // sorted in ascending order
         // sort the employee array by forename in descending order
-        superheroesToSort.sort((a, b) => a.Id < b.Id?1:-1) 
+        superheroesToSort.sort((a, b) => a.id < b.id?1:-1) 
         sortAscendingOrder = false
                             }
     else{
         // sorted in descending order
         // sort the employee array by forename in ascending order
-        superheroesToSort.sort((a, b) =>  a.Id< b.Id?-1:1) 
+        superheroesToSort.sort((a, b) =>  a.id< b.id?-1:1) 
         sortAscendingOrder = true   
         }  
     // output the resulting array in a table
