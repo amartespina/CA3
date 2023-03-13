@@ -219,33 +219,6 @@ function modifySuperhero(IdentificationNumber,align, alive, eye, hair, id, sex, 
  }
      
 
-   /** 
-   function UserValidation(){
-    let username= document.getElementById('email').value
-    let password= document.getElementById('password').value
-    console.log('el username es  es' + username)
-    console.log('la contrasña es' + password)
-    //let jsonUser = JSON.stringify(peopleData)
-     for (var i in peopleData){
-        if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "true") {
-            alert("Welcome " + peopleData[i].name + " you are administrator")
-            document.getElementById("log-in-part").style.display= 'none';
-            document.getElementById("page").style.display='block';
-            console.log(peopleData[i])   
-        }
-        else if (peopleData[i].email === username && peopleData[i].password === password && peopleData[i].isAdministrator === "false") {
-            console.log("caso no adminsitrador")
-            alert("Welcome " + peopleData[i].name + " you are not administrator")   
-            console.log(peopleData[i])  
-        }
-        else {
-            alert("You are not registred")}
-
-        
-    }
-}
-
-    */ 
      
 
    function search(value){
