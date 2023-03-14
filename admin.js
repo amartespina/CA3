@@ -18,7 +18,7 @@ let hideModifySuperhero = true
 let uniqueId = 1
 let encontrado = false 
 let admin = false 
-
+let emptyarray = []
 // Json data tiene los usuarios y contraseñas 
 
 
@@ -130,7 +130,7 @@ function viewJSONData(arrayToView){
         <table class="content-table">
             <thead>             
                     <tr>
-                            <th> Id <br> Number </th>
+                            <th> Identification <br> Number </th>
                               
                             <th> Align <ion-icon name="caret-down-outline" onclick="sortResultsbyAlign()"></ion-icon> </th>
                             <th> Alive <ion-icon name="caret-down-outline" onclick="sortResultsbyAlive()"></ion-icon></th>
@@ -384,6 +384,21 @@ function sortResultsbySex(){
     viewJSONData(superheroesToSort)
 }
 
+function filterAlive(){
+
+    console.log("superheroesToView")
+    console.log(superheroesToView)
+    let aliveSuperheroes = superheroesToView.filter(superhero => superhero.alive === 'deceased characters')
+    console.log("alive")
+    console.log(aliveSuperheroes)
+    viewJSONData(aliveSuperheroes)
+}
+function filterFemale(){
+    let aliveSuperheroes = superheroesToView.filter(superhero => superhero.sex === 'female characters')
+    console.log("alive")
+    console.log(aliveSuperheroes)
+    viewJSONData(aliveSuperheroes)
+}
 
 
 
