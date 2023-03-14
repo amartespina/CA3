@@ -51,26 +51,28 @@
     
     
  <!-- abajo poner style="display:none;"!-->
-    
-        
-    <div id="page" style="display:none;"  > 
-        <div id = "barradenavegacion" class="navbar">
+    <div id="page" style="display:none;"> 
+        <div  id = "barradenavegacion" class="navbar">
             <a class="logo" ><img src="descarga.png" alt="Logo"></a>
             <nav class="navegacion">
-                <ul>
-                    <li><a style="cursor: pointer" onclick="viewJSONData(superheroesToView)"> Display All </a></li>
-                    <li><a onclick="showSearchByName()"> Search By Name </a></li>
-                    <li><a onclick="filterAlive()"> Show Alive Heroes   </a></li>
-                    <li><a onclick="filterFemale()"> Show Female Heroes  </a></li>
-                    
-                    <li><a  id ="navaddsuperhero" onclick="showAddSuperhero()" style="display:none;"> Add Superhero </a></li>
-                    <li><a id = "navmodifysuperhero" onclick="showModifySuperhero()" style="display:none;"> Modify Superhero </a></li>
+            <ul>
+                <li><a onclick="viewJSONData(superheroesToView)"> Display All </a></li>
+                <li><a onclick="showSearchByName()" >Search</a></li>
+                <li class="submenu">
+                <a>Filter By</a>
+                <ul class="hijos">
+                    <li><a onclick="filterAlive()">Alive Heroes</a></li>
+                    <li><a onclick="filterFemale()">Female Heroes</a></li>
                 </ul>
+                </li>
+                <li><a  id ="navaddsuperhero" onclick="showAddSuperhero()" style="display:none;"> Add Superhero </a></li>
+                <li><a id = "navmodifysuperhero" onclick="showModifySuperhero()" style="display:none;"> Modify Superhero </a></li>
+                </li>
+            </ul>
             </nav>
         </div>
-        
 
-        <div id="Warning" class="warning"> 
+               <div id="Warning" class="warning"> 
             <p> <ion-icon name="warning-outline" ></ion-icon> <b style="color: red; background-color: yellow; "> WARNING: </b> <b> This website is designed by and for villains. We're tired of these "superheroes" killing our plans. Here is a table with all the information we have about them. Remember that your continued use of our services is at your own risk.</b> </p> <br> <br>
        
                 <div id = "searchByName"> 
@@ -214,9 +216,7 @@
                     </fieldset>
                 </div>
 
-                <div id = "iddesuperheroes"> 
-
-                </div>
+               
                 <div id="showsuperheroes"> 
 
                 </div>
