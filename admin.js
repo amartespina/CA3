@@ -130,7 +130,7 @@ function viewJSONData(arrayToView){
         <table class="content-table">
             <thead>             
                     <tr>
-                            <th> Identification <br> Number </th>
+                            <th> Id <br> Number </th>
                               
                             <th> Align <ion-icon name="caret-down-outline" onclick="sortResultsbyAlign()"></ion-icon> </th>
                             <th> Alive <ion-icon name="caret-down-outline" onclick="sortResultsbyAlive()"></ion-icon></th>
