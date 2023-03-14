@@ -23,9 +23,7 @@ let emptyarray = []
 
 
 
-function prueba(argumento){
-    console.log(argumento)
-}
+
 // Funciones show 
 function showSearchByName(){
     
@@ -61,7 +59,7 @@ function showModifySuperhero(){
     window.onload = () =>
 {
     let url = `users.json`      /* name of the JSON file */
-
+    
     fetch(url)
     .then(response => response.json())
     .then(jsonData => 
@@ -75,9 +73,6 @@ function showModifySuperhero(){
 function UserValidation(){
     let username= document.getElementById('email').value
     let password= document.getElementById('password').value
-
-    console.log('el username es  es' + username)
-    console.log('la contrasña es' + password)
 
     //let jsonUser = JSON.stringify(peopleData)
     peopleData.forEach(person => {
@@ -106,11 +101,10 @@ function UserValidation(){
 }
 
 
-
-
 function viewJSONData(arrayToView){
     console.log("funcion viewJSONData")
     let url = `superhero.json`
+    // let url = `https://pkgstore.datahub.io/five-thirty-eight/comic-characters/dc-wikia-data_json/data/8b35699325a97475673d4255ab21d4df/dc-wikia-data_json.json`
     fetch(url)
     .then(response => response.json())
     .then(jsonData => 
@@ -237,7 +231,6 @@ function deleteSuperhero(id)
 
    function search(value){
     searchValue = value
-    //filter function. Cunado utilizamos la funcion serach utilizamos el filter-
    if(searchValue === "") {viewJSONData(superheroesToView)} 
     else { 
     let displayedsuperheroes = superheroesToView.filter(superhero => 
@@ -268,18 +261,13 @@ function sortResultsbyAlign(){
     let superheroesToSort = [...superheroesToView]
     if (sortAscendingOrder){
         console.log(superheroesToSort)
-        // sorted in ascending order
-        // sort the employee array by forename in descending order
         superheroesToSort.sort((a, b) => a.align < b.align?1:-1) 
         sortAscendingOrder = false
                             }
     else{
-        // sorted in descending order
-        // sort the employee array by forename in ascending order
         superheroesToSort.sort((a, b) =>  a.align< b.align?-1:1) 
         sortAscendingOrder = true   
         }  
-    // output the resulting array in a table
     viewJSONData(superheroesToSort)
 }
 function sortResultsbyAlive(){
@@ -288,18 +276,13 @@ function sortResultsbyAlive(){
     let superheroesToSort = [...superheroesToView]
     if (sortAscendingOrder){
         console.log(superheroesToSort)
-        // sorted in ascending order
-        // sort the employee array by forename in descending order
         superheroesToSort.sort((a, b) => a.alive < b.alive?1:-1) 
         sortAscendingOrder = false
                             }
     else{
-        // sorted in descending order
-        // sort the employee array by forename in ascending order
         superheroesToSort.sort((a, b) =>  a.alive< b.alive?-1:1) 
         sortAscendingOrder = true   
         }  
-    // output the resulting array in a table
     viewJSONData(superheroesToSort)
 }
 function sortResultsbyEye(){
@@ -308,38 +291,26 @@ function sortResultsbyEye(){
     let superheroesToSort = [...superheroesToView]
     if (sortAscendingOrder){
         console.log(superheroesToSort)
-        // sorted in ascending order
-        // sort the employee array by forename in descending order
         superheroesToSort.sort((a, b) => a.eye < b.eye?1:-1) 
         sortAscendingOrder = false
                             }
     else{
-        // sorted in descending order
-        // sort the employee array by forename in ascending order
         superheroesToSort.sort((a, b) =>  a.eye< b.eye?-1:1) 
         sortAscendingOrder = true   
         }  
-    // output the resulting array in a table
     viewJSONData(superheroesToSort)
 }
 function sortResultsbyHair(){
-    console.log("estamos en sortResults")
-    //viewJSONData()
     let superheroesToSort = [...superheroesToView]
     if (sortAscendingOrder){
         console.log(superheroesToSort)
-        // sorted in ascending order
-        // sort the employee array by forename in descending order
         superheroesToSort.sort((a, b) => a.hair < b.hair?1:-1) 
         sortAscendingOrder = false
                             }
     else{
-        // sorted in descending order
-        // sort the employee array by forename in ascending order
         superheroesToSort.sort((a, b) =>  a.hair< b.hair?-1:1) 
         sortAscendingOrder = true   
         }  
-    // output the resulting array in a table
     viewJSONData(superheroesToSort)
 }
 
@@ -349,18 +320,13 @@ function sortResultsbyId(){
     let superheroesToSort = [...superheroesToView]
     if (sortAscendingOrder){
         console.log(superheroesToSort)
-        // sorted in ascending order
-        // sort the employee array by forename in descending order
         superheroesToSort.sort((a, b) => a.id < b.id?1:-1) 
         sortAscendingOrder = false
                             }
     else{
-        // sorted in descending order
-        // sort the employee array by forename in ascending order
         superheroesToSort.sort((a, b) =>  a.id< b.id?-1:1) 
         sortAscendingOrder = true   
         }  
-    // output the resulting array in a table
     viewJSONData(superheroesToSort)
 }
 function sortResultsbySex(){
@@ -369,34 +335,23 @@ function sortResultsbySex(){
     let superheroesToSort = [...superheroesToView]
     if (sortAscendingOrder){
         console.log(superheroesToSort)
-        // sorted in ascending order
-        // sort the employee array by forename in descending order
         superheroesToSort.sort((a, b) => a.sex < b.sex?1:-1) 
         sortAscendingOrder = false
                             }
     else{
-        // sorted in descending order
-        // sort the employee array by forename in ascending order
         superheroesToSort.sort((a, b) =>  a.sex< b.sex?-1:1) 
         sortAscendingOrder = true   
         }  
-    // output the resulting array in a table
     viewJSONData(superheroesToSort)
 }
 
 function filterAlive(){
-
-    console.log("superheroesToView")
-    console.log(superheroesToView)
     let aliveSuperheroes = superheroesToView.filter(superhero => superhero.alive === 'deceased characters')
-    console.log("alive")
     console.log(aliveSuperheroes)
     viewJSONData(aliveSuperheroes)
 }
 function filterFemale(){
     let aliveSuperheroes = superheroesToView.filter(superhero => superhero.sex === 'female characters')
-    console.log("alive")
-    console.log(aliveSuperheroes)
     viewJSONData(aliveSuperheroes)
 }
 
