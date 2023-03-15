@@ -150,7 +150,7 @@ function viewJSONData(arrayToView){
                htmlString += `</tr>
             </tbody> `
         })
-        //htmlString += `</table><br>${jsonData.length} records found.`
+
         htmlString += `</table>`
         document.getElementById('showsuperheroes').innerHTML = htmlString
     }})
