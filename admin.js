@@ -10,6 +10,11 @@ let admin = false
 
 
 
+function playAudio(){
+    console.log("funcion play audio")
+    var audio = document.getElementById("audio");
+    audio.play()
+}
 
 // Show 
 function showSearchByName(){
@@ -72,7 +77,7 @@ function UserValidation(){
             admin = false 
         }
     })
-    if(!encontrado){ document.getElementById("nomatch").style.display='block';}
+    if(!encontrado){ document.getElementById("nomatch").style.display='block';playAudio()}
     if(encontrado && admin){
         document.getElementById("page").style.display='block';
         document.getElementById("log-in-part").style.display= 'none';   
